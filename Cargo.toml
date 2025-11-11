@@ -1,0 +1,11 @@
+[package]
+name = "wasmedge-rust-plugin-demo"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "wasmedge-rust-plugin-demo"
+path = "src/main.rs"
+
+[dependencies]
+wasmedge_process_interface = "^0.2.1"
