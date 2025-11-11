@@ -14,10 +14,10 @@ jobs:
 
       - name: Install Rust target for wasm
         run: |
-          rustup target add wasm32-wasi
+          rustup target add wasm32-wasip1
 
       - name: Build Wasm files
-        run: cargo build --target wasm32-wasi --release
+        run: cargo build --target wasm32-wasip1 --release
 
       - name: Create Release
         id: create_release
@@ -33,7 +33,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          file: "target/wasm32-wasi/release/*.wasm"
+          file: "target/wasm32-wasip1/release/*.wasm"
           release_id: ${{ steps.create_release.outputs.id }}
           overwrite: true
           verbose: true
