@@ -25,7 +25,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: main
+          tag_name: main-release
           release_name: rust-wasm-builds
           draft: false
           prerelease: false
