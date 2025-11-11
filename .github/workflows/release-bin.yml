@@ -1,0 +1,39 @@
+name: Release Wasm Binary
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Rust target for wasm
+        run: |
+          rustup target add wasm32-wasi
+
+      - name: Build Wasm files
+        run: cargo build --target wasm32-wasi --release
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: main
+          release_name: rust-wasm-builds
+          draft: false
+          prerelease: false
+      - uses: xresloader/upload-to-github-release@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          file: "target/wasm32-wasi/release/*.wasm"
+          release_id: ${{ steps.create_release.outputs.id }}
+          overwrite: true
+          verbose: true
