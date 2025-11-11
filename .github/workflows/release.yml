@@ -26,4 +26,4 @@ jobs:
           context: .
           file: Dockerfile
           push: true
-          tags: ghcr.io/${{ github.event.repository.name }}/wasm:latest
+          tags: ghcr.io/tscng/${{ github.event.repository.name }}:latest
