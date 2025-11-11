@@ -27,3 +27,4 @@ jobs:
           file: Dockerfile
           push: true
           tags: ghcr.io/tscng/${{ github.event.repository.name }}:latest
+          platforms: wasi/wasm
