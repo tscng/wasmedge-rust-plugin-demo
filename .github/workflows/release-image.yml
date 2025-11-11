@@ -26,11 +26,8 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
+          provenance: false
           push: true
           tags: ghcr.io/tscng/${{ github.event.repository.name }}:latest
           platforms: wasi/wasm
-          annotations: |
-            {
-              "module.wasm.image/variant": "compat-smart"
-            }
-
+          annotations: module.wasm.image/variant=compat-smart
