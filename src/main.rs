@@ -1,7 +1,7 @@
 use wasmedge_process_interface::Command;
 
 fn main() {
-    let cmd = Command::new("ls").timeout(1000).output();
+    let cmd = Command::new("echo hello from rust").timeout(1000).output();
 
     println!(" return code : {}", cmd.status);
     println!(" stdout :");
